@@ -1,0 +1,7 @@
+.heart i {
+    color: #ffffff; /* Color del corazón antes de hacer clic */
+}
+
+.heart.clicked i {
+    color: #0095ff; /* Color del corazón después de hacer clic */
+}

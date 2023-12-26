@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="min-height: 100vh;">
+    <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+        <div class="container">
+          <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <div class="col-md-3 mb-2 mb-md-0">
+              <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+              </a>
+            </div>
+            {{> barrita_de_arriba}}
+          </header>
+        </div>
+    </div>
+
+    <header>
+    <h1>Bienvenido a tu perfil</h1>
+</header>
+<section>
+    <h2>Tus Datos</h2>
+    <ul>
+        <li>Nombre: {{user.nombre}}</li>
+        <li>Teléfono: {{user.telefono}}</li>
+        <li>Email: {{user.email}}</li>
+        <td><a class="btn btn-secondary" href="/edit_user?userId={{user.usuarioid}}">Editar perfil</a></td>
+        <a href="/upload" class="btn">
+    <button type="button" class="btn btn-secondary">Subir receta</button>
+</a>
+    </ul>
+</section>
+
+<section>
+<h3>Tus recetas</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>ingredientes</th>
+            <th>Categoría</th>
+            <th>Pasos</th>
+            <th>Tiempo de preparación</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each recipes}}
+        <tr>
+            <td>{{this.nombre}}</td>
+            <td>{{this.ingredientes}}</td>
+            <td>{{this.categoria}}</td>
+            <td>{{this.pasos}}</td>
+            <td>{{this.tiempo}} minutos</td>
+            <td><a class="btn btn-primary" href="/edit_recipe?recipeId={{this.recetaid}}">Editar</a></td>
+            <td><a class="btn btn-secondary" href="/delete_recipe?recipeId={{this.recetaid}}">Eliminar</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</section>
+
+<section>
+    <h3>Tus Recetas Favoritas</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Ingredientes</th>
+                <th>Instrucciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each favorites}}
+            <tr>
+                <td>{{this.nombre}}</td>
+                <td>{{this.ingredientes}}</td>
+                <td>{{this.pasos}}</td>
+                <td><a class="btn btn-secondary" href="/remove_favorite?recipeId={{this.recetaid}}">Eliminar de favoritas</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
+
+<form action="/delete_user" method="post">
+    <button type="submit" class="btn btn-secondary">Eliminar cuenta</button>
+</form>
+
+</body>
+</html>
+
