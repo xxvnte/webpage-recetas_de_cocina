@@ -1,48 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Register</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .footer {
+            margin-top: auto;
+            background-color: #f8f9fa;
+        }
+    </style>
 </head>
-<body style="min-height: 100vh;">
+<body>
     <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
         <div class="container">
-          <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <div class="col-md-3 mb-2 mb-md-0">
-              <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-              </a>
-            </div>
-            {{> barrita_de_arriba}}
-          </header>
-        </div>
-    </div>
-  
-    <div class="d-flex align-items-center justify-content-center py-4 text-emphasis-primary">
-        <div class="shadow">
-            <main class="border p-4 rounded bg-white ">
-                <h2 class="h3 mb-3 fw-normal text-center" class="">Ingreso</h2>
-                <div class="form-floating">
-                    <form action="/login" method="post">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" name="nombre" id="nombre" required="">
-                        <br>
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" class="form-control" name="telefono" id="telefono" required="">
-                        <br>
-                        <input type="submit" class="form-control text-center nav-link py-2" style="background-color: aqua;" value="Iniciar Sesión">
-                    </form>
+            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                <div class="col-md-3 mb-2 mb-md-0">
+                    <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                        <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+                    </a>
                 </div>
+                {{> barrita_de_arriba}}
+    <div class="container d-flex align-items-center justify-content-center py-4">
+        <div class="shadow">
+            <main class="border p-4 rounded bg-white">
+                <h2 class="h3 mb-3 fw-normal text-center">Ingreso</h2>
+                <form action="/login" method="post">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="clave" class="form-label">Clave</label>
+                        <input type="password" class="form-control" id="clave" name="clave" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                    </div>
+                </form>
             </main>
         </div>
-    </div>        
-
-    <div class="container">
-        <footer class="py-3 my-4">
-          <p class="text-center text-body-secondary">© 2023 Company, Inc</p>
-        </footer>
     </div>
-    
+
+    {{> container}}
 </body>
 </html>
